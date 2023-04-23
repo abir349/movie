@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import ReactStars from "react-rating-stars-component";
+import { Link } from "react-router-dom";
 
 function Navbarr({ settext, setrate }) {
   return (
@@ -21,12 +22,12 @@ function Navbarr({ settext, setrate }) {
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
+            style={{ maxHeight: "100px" }}aaaaaaaaaaaa
             navbarScroll
           >
-            <Nav.Link href="#action1">Movies</Nav.Link>
-            <Nav.Link href="#action2">Contact</Nav.Link>
-            <Nav.Link href="#action2">About</Nav.Link>
+            <Nav.Link href="#action1"> <Link style={{textDecoration:"none", color:"white"}} to="/">Movies</Link></Nav.Link>
+            <Nav.Link href="#action2"><Link style={{textDecoration:"none", color:"white"}} to="/about">About</Link></Nav.Link>
+            <Nav.Link href="#action2"><Link style={{textDecoration:"none", color:"white"}} to="/contact">Contact</Link></Nav.Link>
             <Button 
         variant="dark"
         style={{ textAlign:"centre" , backgroundColor: "#FFD700", color: "white", border: "none" }}>

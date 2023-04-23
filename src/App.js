@@ -5,6 +5,10 @@ import Caroussel from "./components/Caroussel";
 import MovieList from "./components/MovieList";
 import Footerr from "./components/Footerr"
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Trailer from "./components/Trailer";
 function App() {
   const [movies, setmovies] = useState([
     {
@@ -41,32 +45,28 @@ function App() {
     },
     {
       name: "Shutter Island",
-      posterurl:
-        "https://images.squarespace-cdn.com/content/v1/5b76c81055b02cf394f9ece5/1573132285768-0ALN9MWORAVTHBW7UBVI/ke17ZwdGBToddI8pDm48kNovdPSmLXrGMIo6NKEdEUEUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcwA5BL7WQp-UtG0T9B_ANEONHo-Gj1DAsyRwVYWk8R2xfkNmKPWrmaFhthYewTpvH/Shutter%2BIsland%2B1.jpg?format=1000w",
+      posterurl:"https://images.squarespace-cdn.com/content/v1/5b76c81055b02cf394f9ece5/1573132285768-0ALN9MWORAVTHBW7UBVI/ke17ZwdGBToddI8pDm48kNovdPSmLXrGMIo6NKEdEUEUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcwA5BL7WQp-UtG0T9B_ANEONHo-Gj1DAsyRwVYWk8R2xfkNmKPWrmaFhthYewTpvH/Shutter%2BIsland%2B1.jpg?format=1000w",
       description:
         "Teddy Daniels and Chuck Aule, two US marshals, are sent to an asylum on a remote island in order to investigate the disappearance of a patient, where Teddy uncovers a shocking truth about the place.",
       rating: 5,
     },
     {
       name: "Warcraft",
-      posterurl:
-        "https://www.rollingstone.com/wp-content/uploads/2018/06/rs-243610-8J07_WF0170_COMP_143639R_G_SRGB_000000_HR.jpg",
+      posterurl:"https://www.rollingstone.com/wp-content/uploads/2018/06/rs-243610-8J07_WF0170_COMP_143639R_G_SRGB_000000_HR.jpg",
       description:
         "A few human survivors must team up with a group of dissenting Orcs to stop an Orc horde from invading their planet through a magic portal.",
       rating: 1,
     },
     {
       name: "The Godfather",
-      posterurl:
-        "https://m.media-amazon.com/images/M/MV5BYWNlN2U4YjQtMzI3NC00ZjkxLWEwMTItYWRlNDUxYTYwYjVlXkEyXkFqcGdeQWpvaG5oYXJ0._V1_UX477_CR0,0,477,268_AL_.jpg",
+      posterurl:"https://m.media-amazon.com/images/M/MV5BYWNlN2U4YjQtMzI3NC00ZjkxLWEwMTItYWRlNDUxYTYwYjVlXkEyXkFqcGdeQWpvaG5oYXJ0._V1_UX477_CR0,0,477,268_AL_.jpg",
       description:
         "The Godfather is an American film series that consists of three crime films directed by Francis Ford Coppola inspired by the 1969 novel of the same name by Italian American author Mario Puzo.",
       rating: 5,
     },
     {
       name: "Taxi Driver",
-      posterurl:
-        "https://www.indiewire.com/wp-content/uploads/2016/04/taxi-driver-1.jpg?w=670&h=377&crop=1",
+      posterurl:"https://www.indiewire.com/wp-content/uploads/2016/04/taxi-driver-1.jpg?w=670&h=377&crop=1",
       description:
         "Travis, an ex-marine and Vietnam veteran, works as a taxi driver in New York City. One day, he is driven to save an underage prostitute from her pimp in an effort to clean the city of its corruption.",
       rating: 3,
@@ -112,14 +112,22 @@ function App() {
     <div className="App">
       <Navbarr settext={settext} setrate={setrate} />
       <Caroussel />
-      <MovieList
+      <Routes  >
+        <Route path="/" element={ <MovieList
         movies={movies}
         setmovies={setmovies}
         text={text}
         rate={rate}
-      />
+      /> } />
+        <Route path="/about" element={ <About/> } />
+        <Route path="/contact" element={ <Contact/> } />
+        <Route path="/trailer/:name" element={ <Trailer movies={movies} /> } />
+
+      </Routes>
+     
       <div>     <Footerr/>
 </div>
+
      </div>
   );
 }
